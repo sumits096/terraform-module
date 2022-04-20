@@ -1,3 +1,5 @@
+variable "service_account_credentials" {}
+
 variable "project_name" {}
 
 variable "region" {}

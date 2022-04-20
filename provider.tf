@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("service-account.json")
+  credentials = var.service_account_credentials
   project     = var.project_name
   region      = var.region
   zone        = var.zone
