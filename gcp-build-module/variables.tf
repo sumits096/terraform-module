@@ -35,7 +35,7 @@ variable "repository_name" {
 }
 
 variable "branch_name" {
-  description = "Example branch name used to trigger builds."
+  description = "Example branch name used to trigger builds"
   default     = "master"
 }
 
