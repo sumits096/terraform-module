@@ -1,9 +1,7 @@
 variable "service_account_credentials" {
   description = "Service account email Id."
-  type = object({
-    name = a
-  })
-  default = "terraform-deployment-demo-sa@terraform-deployment-demo.iam.gserviceaccount.com"
+  type        = string
+  default     = "terraform-deployment-demo-sa@terraform-deployment-demo.iam.gserviceaccount.com"
 }
 
 variable "project_name" {}
