@@ -1,83 +1,31 @@
-variable "service_account_credentials" {
-  description = "Service account email Id."
-  type        = string
-  default     = ""
-}
+variable "service_account_credentials" {}
 
-variable "project_name" {
-  description = "studied-client-346013"
-  type        = string
-  default     = ""
-}
+variable "project_name" {}
 
-variable "region" {
-  description = "Service region"
-  type        = string
-  default     = ""
-}
+variable "region" {}
 
-variable "zone" {
-  description = "Service zone"
-  type        = string
-  default     = ""
-}
+variable "zone" {}
 
-variable "service_account_name" {
-  description = "Service account."
-  type        = string
-  default     = ""
-}
+variable "service_account_name" {}
 
-variable "service_account_email" {
-  description = "Service account email Id."
-  type        = string
-  default     = ""
-}
+variable "service_account_email" {}
 
-variable "service_name" {
-  description = "gcp-cloud-run-service."
-  type        = string
-  default     = ""
-}
+variable "service_name" {}
 
 #----------------------------------------------
 # VM Instance variables
 #----------------------------------------------
-variable "instance_name" {
-  type        = string
-  description = "VM instance name"
-  default     = ""
-}
+variable "instance_name" {}
 
-variable "machine_type" {
-  type        = string
-  description = "vm machine type"
-  default     = ""
-}
+variable "machine_type" {}
 
-variable "compute_network" {
-  type        = string
-  description = "compute network"
-  default     = ""
-}
+variable "compute_network" {}
 
 #----------------------------------------------
 # CI/CD Build variables
 #----------------------------------------------
-variable "repository_name" {
-  description = "terraform-module"
-  type        = string
-  default     = ""
-}
+variable "repository_name" {}
 
-variable "branch_name" {
-  description = "branch name"
-  type        = string
-  default     = ""
-}
+variable "branch_name" {}
 
-variable "image_name" {
-  description = "image name."
-  type        = string
-  default     = ""
-}
+variable "image_name" {}
