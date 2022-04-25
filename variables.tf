@@ -40,6 +40,30 @@ variable "service_name" {
   default     = "gcp-cloud-run-service"
 }
 
+#----------------------------------------------
+# VM Instance variables
+#----------------------------------------------
+variable "instance_name" {
+  type        = string
+  description = "VM instance name"
+  default     = "ix-vm-machine"
+}
+
+variable "machine_type" {
+  type        = string
+  description = "vm machine type"
+  default     = "f1-micro"
+}
+
+variable "compute_network" {
+  type        = string
+  description = "compute network"
+  default     = "iv-vm-network"
+}
+
+#----------------------------------------------
+# CI/CD Build variables
+#----------------------------------------------
 variable "repository_name" {
   description = "terraform-module"
   type        = string
