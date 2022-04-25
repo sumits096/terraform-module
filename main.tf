@@ -1,6 +1,8 @@
 module "vm_instance_1" {
-  source     = "./vm-instance-module"
-  gcp_region = var.gcp_region
+  source          = "./vm-instance-module"
+  instance_name   = var.instance_name
+  machine_type    = var.machine_type
+  compute_network = var.compute_network
 }
 
 
