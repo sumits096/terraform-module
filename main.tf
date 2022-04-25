@@ -4,7 +4,7 @@ module "vm_instance_1" {
 }
 
 
-module "connector_cicd_build_trigger" {
+module "connector_cicd" {
   source                = "/build-trigger-module"
   repository_name       = var.repository_name
   branch_name           = var.branch_name
