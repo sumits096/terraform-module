@@ -11,13 +11,13 @@ variable "project_name" {
 }
 
 variable "region" {
-  description = "Service account email Id."
+  description = "Service region"
   type        = string
   default     = "us-central1"
 }
 
 variable "zone" {
-  description = "Service account email Id."
+  description = "Service zone"
   type        = string
   default     = "us-central1-a"
 }
