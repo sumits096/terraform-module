@@ -58,7 +58,7 @@ variable "machine_type" {
 variable "compute_network" {
   type        = string
   description = "compute network"
-  default     = ""
+  default     = "ix-vm-network"
 }
 
 #----------------------------------------------
