@@ -1,5 +1,5 @@
 service_account_credentials = "23130737730-compute@developer.gserviceaccount.com"
-project_name                = "studied-client-34601"
+project_name                = "studied-client-346013"
 region                      = "us-central1"
 zone                        = "us-central1-a"
 service_account_name        = "23130737730-compute"
