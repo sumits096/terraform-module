@@ -10,6 +10,7 @@ variable "service_name" {}
 # VM Instance variables
 #----------------------------------------------
 variable "instance_name" {}
+variable "instance_image" {}
 variable "machine_type" {}
 variable "compute_network" {}
 

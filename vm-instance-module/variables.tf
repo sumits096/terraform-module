@@ -10,6 +10,12 @@ variable "instance_name" {
   default     = "ix-vm-machine"
 }
 
+variable "instance_image" {
+  type        = string
+  description = "VM instance image"
+  default     = "debian-cloud/debian-9"
+}
+
 variable "machine_type" {
   type        = string
   description = "vm machine type"
