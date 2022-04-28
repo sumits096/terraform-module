@@ -19,13 +19,13 @@ variable "zone" {
 variable "service_account_email" {
   description = "Service account email Id."
   type        = string
-  default     = "23130737730-compute@developer.gserviceaccount.com"
+  default     = "terraform-deployment-demo-sa@terraform-deployment-demo.iam.gserviceaccount.com"
 }
 
 variable "service_name" {
   description = "The name of the Cloud Run service to deploy."
   type        = string
-  default     = "23130737730-compute"
+  default     = "gcp-cloud-run-service"
 }
 
 variable "repository_name" {
