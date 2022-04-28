@@ -19,24 +19,24 @@ variable "zone" {
 variable "service_account_email" {
   description = "Service account email Id."
   type        = string
-  default     = "terraform-deployment-demo-sa@terraform-deployment-demo.iam.gserviceaccount.com"
+  default     = "23130737730-compute@developer.gserviceaccount.com"
 }
 
 variable "service_name" {
   description = "The name of the Cloud Run service to deploy."
   type        = string
-  default     = "gcp-cloud-run-service"
+  default     = "23130737730-compute"
 }
 
 variable "repository_name" {
   description = "Name of the Google Cloud Source Repository to create."
   type        = string
-  default     = "terraform-demo-repo"
+  default     = "terraform-module"
 }
 
 variable "branch_name" {
   description = "Example branch name used to trigger builds"
-  default     = "master"
+  default     = "main"
 }
 
 variable "image_name" {
