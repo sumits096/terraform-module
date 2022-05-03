@@ -115,14 +115,14 @@ resource "google_project_service" "iam" {
 
 resource "google_project_iam_binding" "binding" {
   project    = var.project_name
-  members    = ["serviceAccount: 23130737730-compute@developer.gserviceaccount.com"]
+  members    = ["user: 23130737730-compute@developer.gserviceaccount.com"]
   role       = "roles/run.admin"
   depends_on = [google_project_service.build]
 }
 
 resource "google_project_iam_binding" "sa" {
   project    = var.project_name
-  members    = ["serviceAccount: 23130737730-compute@developer.gserviceaccount.com"]
+  members    = ["user: 23130737730-compute@developer.gserviceaccount.com"]
   role       = "roles/iam.serviceAccountUser"
   depends_on = [google_project_service.build]
 }
