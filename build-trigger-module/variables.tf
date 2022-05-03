@@ -25,7 +25,7 @@ variable "service_account_email" {
 variable "service_name" {
   description = "The name of the Cloud Run service to deploy."
   type        = string
-  default     = "terra-demo"
+  default     = "terraform-demo"
 }
 
 variable "repository_name" {
