@@ -104,26 +104,26 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
 #   - Create SA
 #----------------------------------------------------------------------------------------------
 
-# resource "google_project_service" "iam" {
-#   service            = "iam.googleapis.com"
-#   disable_on_destroy = false
-# }
+resource "google_project_service" "iam" {
+  service            = "iam.googleapis.com"
+  disable_on_destroy = false
+}
 
 #----------------------------------------------------------------------------------------------
 #  Grant Cloud Build Permission
 #----------------------------------------------------------------------------------------------
 
-# resource "google_project_iam_binding" "binding" {
-#   members    = ["serviceAccount: _SERVICE_ACCOUNT_EMAIL"]
-#   role       = "roles/run.admin"
-#   depends_on = [google_project_service.build]
-# }
+resource "google_project_iam_binding" "binding" {
+  members    = ["serviceAccount: _SERVICE_ACCOUNT_EMAIL"]
+  role       = "roles/run.admin"
+  depends_on = [google_project_service.build]
+}
 
-# resource "google_project_iam_binding" "sa" {
-#   members    = ["serviceAccount: _SERVICE_ACCOUNT_EMAIL"]
-#   role       = "roles/iam.serviceAccountUser"
-#   depends_on = [google_project_service.build]
-# }
+resource "google_project_iam_binding" "sa" {
+  members    = ["serviceAccount: _SERVICE_ACCOUNT_EMAIL"]
+  role       = "roles/iam.serviceAccountUser"
+  depends_on = [google_project_service.build]
+}
 
 
 #----------------------------------------------------------------------------------------------
