@@ -1,7 +1,7 @@
 resource "google_cloudbuild_trigger" "manual-trigger" {
   name        = "manual-build"
-  description = "this is "
-  tags        = ""
+  description = "this is"
+  tags        = "this is tags"
 
   source_to_build {
     uri       = "https://github.com/sumits096/connector-gcp-test.git"
