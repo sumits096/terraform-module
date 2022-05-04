@@ -6,6 +6,6 @@
 #   compute_network = var.compute_network
 # }
 
-module "ix-build-trigger" {
+module "ix-build_trigger" {
   source = "./build-trigger-module"
 }
