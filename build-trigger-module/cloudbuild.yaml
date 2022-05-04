@@ -13,3 +13,5 @@ steps:
     - '--allow-unauthenticated'
     - '--service-account=23130737730-compute@developer.gserviceaccount.com'
     - '--image=gcr.io/cloudrun/connector:$SHORT_SHA'
+images:
+- 'gcr.io/cloudrun/connector:$SHORT_SHA'
