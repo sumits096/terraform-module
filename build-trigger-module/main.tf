@@ -1,10 +1,17 @@
+resource "google_project_service" "build" {
+  service            = "cloudbuild.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_cloudbuild_trigger" "manual-trigger" {
-  name            = "manual-build"
-  description     = "this is"
-  service_account = var.service_account_credentials
-  project         = var.project_name
-  region          = var.regions
-  zone            = var.zone
+  name        = "manual-build"
+  description = "this is"
+
+  build_source {
+    uri       = "https://github.com/sumits096/connector-gcp-test.git"
+    ref       = "refs/heads/main"
+    repo_type = "GITHUB"
+  }
 
   source_to_build {
     uri       = "https://github.com/sumits096/connector-gcp-test.git"
@@ -24,7 +31,7 @@ resource "google_cloudbuild_trigger" "manual-trigger" {
     name  = "sumits096"
     push {
       invert_regex = true
-      branch       = "master"
+      branch       = "^master$"
     }
   }
 
