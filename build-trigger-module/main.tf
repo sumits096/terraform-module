@@ -1,5 +1,7 @@
 resource "google_cloudbuild_trigger" "manual-trigger" {
-  name = "manual-build"
+  name        = "manual-build"
+  description = "this is "
+  tags        = ""
 
   source_to_build {
     uri       = "https://github.com/sumits096/connector-gcp-test.git"
@@ -14,7 +16,15 @@ resource "google_cloudbuild_trigger" "manual-trigger" {
     repo_type = "GITHUB"
   }
 
+  github {
+    owner = "sumits096"
+    name  = "sumits096"
+    push {
+      invert_regex = true
+      branch       = "master"
+    }
+  }
   approval_config {
-    approval_required = true
+    approval_required = false
   }
 }
