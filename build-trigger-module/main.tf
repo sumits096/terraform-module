@@ -7,12 +7,6 @@ resource "google_cloudbuild_trigger" "manual-trigger" {
   name        = "manual-build"
   description = "this is"
 
-  build_source {
-    uri       = "https://github.com/sumits096/connector-gcp-test.git"
-    ref       = "refs/heads/main"
-    repo_type = "GITHUB"
-  }
-
   source_to_build {
     uri       = "https://github.com/sumits096/connector-gcp-test.git"
     ref       = "refs/heads/main"
