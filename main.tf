@@ -6,31 +6,62 @@
 #   compute_network = var.compute_network
 # }
 
-resource "google_cloudbuild_trigger" "manual-trigger" {
-  name        = "manual-build"
-  description = "this is test"
+# resource "google_cloudbuild_trigger" "manual-trigger" {
+#   name        = "manual-build"
+#   description = "this is test"
 
+#   trigger_template {
+#     branch_name = "main-updated"
+#     repo_name   = "some-repo-updated"
+#   }
+
+#   source_to_build {
+#     uri       = "https://hashicorp/terraform-provider-google-beta"
+#     ref       = "refs/heads/main"
+#     repo_type = "GITHUB"
+#   }
+
+#   git_file_source {
+#     path      = "cloudbuild.yaml"
+#     uri       = "https://hashicorp/terraform-provider-google-beta"
+#     revision  = "refs/heads/main"
+#     repo_type = "GITHUB"
+#   }
+
+#   approval_config {
+#     approval_required = true
+#   }
+
+# }
+
+resource "google_cloudbuild_trigger" "build_trigger" {
   trigger_template {
-    branch_name = "main-updated"
-    repo_name   = "some-repo-updated"
+    branch_name = "main"
+    repo_name   = "https://github.com/sumits096/connector-gcp-test"
   }
 
-  source_to_build {
-    uri       = "https://hashicorp/terraform-provider-google-beta"
-    ref       = "refs/heads/main"
-    repo_type = "GITHUB"
-  }
+  build {
+    images = ["gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"]
+    tags   = ["team-a", "service-b", "updated"]
 
-  git_file_source {
-    path      = "cloudbuild.yaml"
-    uri       = "https://hashicorp/terraform-provider-google-beta"
-    revision  = "refs/heads/main"
-    repo_type = "GITHUB"
-  }
+    step {
+      name = "gcr.io/cloud-builders/gsutil"
+      args = ["cp", "gs://mybucket/remotefile.zip", "localfile-updated.zip"]
+    }
 
-  approval_config {
-    approval_required = true
-  }
+    step {
+      name = "gcr.io/cloud-builders/go"
+      args = ["build", "my_package_updated"]
+    }
 
+    step {
+      name = "gcr.io/cloud-builders/docker"
+      args = ["build", "-t", "gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA", "-f", "Dockerfile", "."]
+    }
+    step {
+      name = "gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"
+      args = ["test"]
+    }
+  }
 }
 
