@@ -17,6 +17,7 @@ image_name                  = "connector"
 #----------------------------------------------
 # CI/CD Build variables
 #----------------------------------------------
+google_provider           = "google-beta"
 build_trigger_name        = "terraform-trigger"
 build_trigger_description = "Trigger build on changes from sanity"
 build_trigger_status      = false

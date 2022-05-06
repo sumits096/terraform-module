@@ -1,23 +1,47 @@
-variable "service_account_credentials" {
-  description = "Service account email Id."
+variable "google_provider" {
+  description = "google provider"
   type        = string
-  default     = "23130737730-compute@developer.gserviceaccount.com"
+  default     = "google-beta"
 }
 
-variable "project_name" {
-  description = "studied-client-346013"
+variable "build_trigger_name" {
+  description = "build trigger name"
   type        = string
-  default     = "studied-client-346013"
+  default     = "terraform-trigger"
 }
 
-variable "region" {
-  description = "Service region"
+variable "build_trigger_description" {
+  description = "build trigger description"
   type        = string
-  default     = "us-central1"
+  default     = "Trigger build"
 }
 
-variable "zone" {
-  description = "Service zone"
+variable "build_trigger_status" {
+  description = "build status"
+  type        = bool
+  default     = false
+}
+
+variable "build_trigger_filename" {
+  description = "cloudbuild yaml file path"
   type        = string
-  default     = "us-central1-a"
+  default     = "connector/workflow/cloudbuild.yaml"
+}
+
+variable "github_owner" {
+  description = "github owner name"
+  type        = string
+  default     = "sumits096"
+}
+
+variable "github_repo_name" {
+  description = "github repository name"
+  type        = string
+  default     = "connector-gcp-test"
+}
+
+variable "github_branch_name" {
+  description = "github branch name"
+  type        = string
+  default     = "^main$"
 }
