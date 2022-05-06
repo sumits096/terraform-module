@@ -15,7 +15,7 @@ resource "google_cloudbuild_trigger" "manual-trigger" {
     repo_name   = "https://github.com/sumits096/connector-gcp-test"
   }
 
-  service_account = var.service_account
+  service_account = var.service_account_email
   filename        = "connector/workflow/cloudbuild.yaml"
 
   # source_to_build {
