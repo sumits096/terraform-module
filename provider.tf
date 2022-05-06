@@ -1,11 +1,11 @@
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "3.5.0"
-    }
-  }
-}
+# terraform {
+#   required_providers {
+#     google-beta = {
+#       source  = "hashicorp/google"
+#       version = "3.5.0"
+#     }
+#   }
+# }
 
 provider "google-beta" {
   credentials = var.service_account_credentials
