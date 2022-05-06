@@ -1,4 +1,4 @@
-service_account_credentials = ""
+service_account_credentials = "{56}"
 project_name                = "studied-client-346013"
 region                      = "us-central1"
 zone                        = "us-central1-a"
