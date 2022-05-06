@@ -7,17 +7,22 @@
 # }
 
 resource "google_cloudbuild_trigger" "website-sanity-deploy-dev" {
-  name            = "sanity-webhook-trigger-dev"
-  description     = "Trigger build on changes from sanity"
-  tags            = "connector"
-  disabled        = false
-  service_account = var.service_account_email
-  filename        = "/connector/workflow/cloudbuild.yml"
+  name        = "sanity-webhook-trigger-dev"
+  description = "Trigger build on changes from sanity"
+  tags        = "connector"
+  disabled    = false
+  filename    = "/connector/workflow/cloudbuild.yml"
 
   git_file_source {
     path      = "https://github.com/sumits096/connector-gcp-test.git"
     uri       = "https://github.com/sumits096/connector-gcp-test.git"
     revision  = "refs/heads/main"
+    repo_type = "GITHUB"
+  }
+
+  source_to_build {
+    uri       = "https://github.com/sumits096/connector-gcp-test.git"
+    ref       = "refs/heads/main"
     repo_type = "GITHUB"
   }
 

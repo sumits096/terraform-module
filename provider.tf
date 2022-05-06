@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-provider "google" {
+provider "google-beta" {
   credentials = var.service_account_credentials
   project     = var.project_name
   region      = var.region
