@@ -1,10 +1,10 @@
-module "ix-vm_instance" {
-  source          = "./vm-instance-module"
-  instance_name   = var.instance_name
-  instance_image  = var.instance_image
-  machine_type    = var.machine_type
-  compute_network = var.compute_network
-}
+# module "ix-vm_instance" {
+#   source          = "./vm-instance-module"
+#   instance_name   = var.instance_name
+#   instance_image  = var.instance_image
+#   machine_type    = var.machine_type
+#   compute_network = var.compute_network
+# }
 
 # resource "google_cloudbuild_trigger" "manual-trigger" {
 #   name        = "manual-build"
@@ -34,34 +34,34 @@ module "ix-vm_instance" {
 
 # }
 
-# resource "google_cloudbuild_trigger" "build_trigger" {
-#   trigger_template {
-#     branch_name = "main"
-#     repo_name   = "https://github.com/sumits096/connector-gcp-test"
-#   }
+resource "google_cloudbuild_trigger" "build_trigger" {
+  trigger_template {
+    branch_name = "main"
+    repo_name   = "https://github.com/sumits096/connector-gcp-test"
+  }
 
-#   build {
-#     images = ["gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"]
-#     tags   = ["team-a", "service-b", "updated"]
+  build {
+    images = ["gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"]
+    tags   = ["team-a", "service-b", "updated"]
 
-#     step {
-#       name = "gcr.io/cloud-builders/gsutil"
-#       args = ["cp", "gs://mybucket/remotefile.zip", "localfile-updated.zip"]
-#     }
+    step {
+      name = "gcr.io/cloud-builders/gsutil"
+      args = ["cp", "gs://mybucket/remotefile.zip", "localfile-updated.zip"]
+    }
 
-#     step {
-#       name = "gcr.io/cloud-builders/go"
-#       args = ["build", "my_package_updated"]
-#     }
+    step {
+      name = "gcr.io/cloud-builders/go"
+      args = ["build", "my_package_updated"]
+    }
 
-#     step {
-#       name = "gcr.io/cloud-builders/docker"
-#       args = ["build", "-t", "gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA", "-f", "Dockerfile", "."]
-#     }
-#     step {
-#       name = "gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"
-#       args = ["test"]
-#     }
-#   }
-# }
+    step {
+      name = "gcr.io/cloud-builders/docker"
+      args = ["build", "-t", "gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA", "-f", "Dockerfile", "."]
+    }
+    step {
+      name = "gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"
+      args = ["test"]
+    }
+  }
+}
 
