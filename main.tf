@@ -15,7 +15,7 @@ resource "google_cloudbuild_trigger" "terraform-trigger" {
 
   github {
     owner = "sumits096"
-    name  = "https://github.com/sumits096/connector-gcp-test"
+    name  = "connector-gcp-test"
     push {
       branch = "^main$"
     }
