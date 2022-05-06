@@ -12,7 +12,11 @@ resource "google_cloudbuild_trigger" "website-sanity-deploy-dev" {
   tags        = "connector"
   disabled    = false
   filename    = "/connector/workflow/cloudbuild.yml"
+  provider    = google-beta
 
+  github {
+
+  }
   git_file_source {
     path      = "https://github.com/sumits096/connector-gcp-test.git"
     uri       = "https://github.com/sumits096/connector-gcp-test.git"
