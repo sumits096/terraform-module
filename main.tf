@@ -7,7 +7,13 @@
 # }
 
 resource "google_cloudbuild_trigger" "manual-trigger" {
-  name = "manual-build"
+  name        = "manual-build"
+  description = "this is test"
+
+  trigger_template {
+    branch_name = "main-updated"
+    repo_name   = "some-repo-updated"
+  }
 
   source_to_build {
     uri       = "https://hashicorp/terraform-provider-google-beta"
@@ -25,4 +31,6 @@ resource "google_cloudbuild_trigger" "manual-trigger" {
   approval_config {
     approval_required = true
   }
+
 }
+
