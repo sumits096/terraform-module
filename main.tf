@@ -6,29 +6,34 @@
 #   compute_network = var.compute_network
 # }
 
-resource "google_cloudbuild_trigger" "website-sanity-deploy-dev" {
-  name        = "sanity-webhook-trigger-dev"
+resource "google_cloudbuild_trigger" "terraform-trigger" {
+  name        = "terraform-trigger"
   description = "Trigger build on changes from sanity"
-  tags        = "connector"
   disabled    = false
   filename    = "/connector/workflow/cloudbuild.yml"
   provider    = google-beta
 
   github {
+    owner = "sumits096"
+    name  = "https://github.com/sumits096/connector-gcp-test"
+    push {
+      invert_regex = true
+      branch       = "main"
+    }
+  }
 
-  }
-  git_file_source {
-    path      = "https://github.com/sumits096/connector-gcp-test.git"
-    uri       = "https://github.com/sumits096/connector-gcp-test.git"
-    revision  = "refs/heads/main"
-    repo_type = "GITHUB"
-  }
+  # git_file_source {
+  #   path      = "https://github.com/sumits096/connector-gcp-test.git"
+  #   uri       = "https://github.com/sumits096/connector-gcp-test.git"
+  #   revision  = "refs/heads/main"
+  #   repo_type = "GITHUB"
+  # }
 
-  source_to_build {
-    uri       = "https://github.com/sumits096/connector-gcp-test.git"
-    ref       = "refs/heads/main"
-    repo_type = "GITHUB"
-  }
+  # source_to_build {
+  #   uri       = "https://github.com/sumits096/connector-gcp-test.git"
+  #   ref       = "refs/heads/main"
+  #   repo_type = "GITHUB"
+  # }
 
 }
 
