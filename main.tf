@@ -7,94 +7,22 @@
 # }
 
 resource "google_cloudbuild_trigger" "terraform-trigger" {
-  provider    = google-beta
-  name        = "terraform-trigger"
-  description = "Trigger build on changes from sanity"
-  disabled    = false
-  filename    = "/connector/workflow/cloudbuild.yaml"
+  provider    = "google-beta"
+  name        = var.build_trigger_name
+  description = var.build_trigger_description
+  disabled    = var.build_trigger_status
+  filename    = var.build_trigger_filename
 
   github {
-    owner = "sumits096"
-    name  = "connector-gcp-test"
+    owner = var.github_owner
+    name  = var.github_repo_name
     push {
-      branch = "^main$"
+      branch = var.github_branch_name
     }
   }
-
-  # git_file_source {
-  #   path      = "https://github.com/sumits096/connector-gcp-test.git"
-  #   uri       = "https://github.com/sumits096/connector-gcp-test.git"
-  #   revision  = "refs/heads/main"
-  #   repo_type = "GITHUB"
-  # }
-
-  # source_to_build {
-  #   uri       = "https://github.com/sumits096/connector-gcp-test.git"
-  #   ref       = "refs/heads/main"
-  #   repo_type = "GITHUB"
-  # }
-
 }
 
-# resource "google_cloudbuild_trigger" "manual-trigger" {
-#   name        = "Triggered"
-#   description = "Triggered via terraform"
 
-#   trigger_template {
-#     branch_name = "main"
-#     repo_name   = "https://github.com/sumits096/connector-gcp-test"
-#   }
 
-#   service_account = var.service_account_email
-#   filename        = "connector/workflow/cloudbuild.yaml"
 
-#   source_to_build {
-#     uri       = "https://hashicorp/terraform-provider-google-beta"
-#     ref       = "refs/heads/main"
-#     repo_type = "GITHUB"
-#   }
-
-#   git_file_source {
-#     path      = "cloudbuild.yaml"
-#     uri       = "https://hashicorp/terraform-provider-google-beta"
-#     revision  = "refs/heads/main"
-#     repo_type = "GITHUB"
-#   }
-
-#   approval_config {
-#     approval_required = true
-#   }
-
-# }
-
-# resource "google_cloudbuild_trigger" "build_trigger" {
-#   trigger_template {
-#     branch_name = "main"
-#     repo_name   = "https://github.com/sumits096/connector-gcp-test"
-#   }
-
-#   build {
-#     images = ["gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"]
-#     tags   = ["team-a", "service-b", "updated"]
-
-#     step {
-#       name = "gcr.io/cloud-builders/gsutil"
-#       args = ["cp", "gs://mybucket/remotefile.zip", "localfile-updated.zip"]
-#     }
-
-#     step {
-#       name = "gcr.io/cloud-builders/go"
-#       args = ["build", "my_package_updated"]
-#     }
-
-#     step {
-#       name = "gcr.io/cloud-builders/docker"
-#       args = ["build", "-t", "gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA", "-f", "Dockerfile", "."]
-#     }
-#     step {
-#       name = "gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"
-#       args = ["test"]
-#     }
-#   }
-# }
 

@@ -12,3 +12,15 @@ compute_network             = "ix-vm-network"
 repository_name             = "terraform-module"
 branch_name                 = "main"
 image_name                  = "connector"
+
+
+#----------------------------------------------
+# CI/CD Build variables
+#----------------------------------------------
+build_trigger_name        = "terraform-trigger"
+build_trigger_description = "Trigger build on changes from sanity"
+build_trigger_status      = false
+build_trigger_filename    = "connector/workflow/cloudbuild.yaml"
+github_owner              = "sumits096"
+github_repo_name          = "connector-gcp-test"
+github_branch_name        = "^main$"

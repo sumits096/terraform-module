@@ -1,21 +1,15 @@
-resource "google_cloudbuild_trigger" "pull_request_merge" {
-  project     = "cloud-build-3660853213"
-  name        = "pull-request-merge"
-  description = <<EOF
-  Trigger  for Cloud Build when a pull request is merged into master.
-  EOF
+resource "google_cloudbuild_trigger" "terraform-trigger" {
+  provider    = "google-beta"
+  name        = "terraform-trigger"
+  description = "Trigger build on changes from sanity"
+  disabled    = false
+  filename    = "connector/workflow/cloudbuild.yaml"
 
   github {
-    name  = "examples"
-    owner = "parabolic"
-
+    owner = "sumits096"
+    name  = "connector-gcp-test"
     push {
-      branch = "^master$"
+      branch = "^main$"
     }
   }
-
-  included_files = ["terraform/iac-pipelines-with-terraform-and-cloud-build/**/*.tf"]
-
-  filename   = "terraform/iac-pipelines-with-terraform-and-cloud-build/cloudbuild_pull_request_merge.yaml"
-  depends_on = [google_project_service.apis]
 }
