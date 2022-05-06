@@ -15,22 +15,25 @@ resource "google_cloudbuild_trigger" "manual-trigger" {
     repo_name   = "https://github.com/sumits096/connector-gcp-test"
   }
 
-  source_to_build {
-    uri       = "https://hashicorp/terraform-provider-google-beta"
-    ref       = "refs/heads/main"
-    repo_type = "GITHUB"
-  }
+  service_account = var.service_account
+  filename        = "connector/workflow/cloudbuild.yaml"
 
-  git_file_source {
-    path      = "cloudbuild.yaml"
-    uri       = "https://hashicorp/terraform-provider-google-beta"
-    revision  = "refs/heads/main"
-    repo_type = "GITHUB"
-  }
+  # source_to_build {
+  #   uri       = "https://hashicorp/terraform-provider-google-beta"
+  #   ref       = "refs/heads/main"
+  #   repo_type = "GITHUB"
+  # }
 
-  approval_config {
-    approval_required = true
-  }
+  # git_file_source {
+  #   path      = "cloudbuild.yaml"
+  #   uri       = "https://hashicorp/terraform-provider-google-beta"
+  #   revision  = "refs/heads/main"
+  #   repo_type = "GITHUB"
+  # }
+
+  # approval_config {
+  #   approval_required = true
+  # }
 
 }
 
