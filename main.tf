@@ -7,22 +7,20 @@
 # }
 
 resource "google_cloudbuild_trigger" "website-sanity-deploy-dev" {
-  name        = "sanity-webhook-trigger-dev"
-  description = "Trigger build on changes from sanity"
-  filename    = "/connector/workflow/cloudbuild.yml"
+  name            = "sanity-webhook-trigger-dev"
+  description     = "Trigger build on changes from sanity"
+  tags            = "connector"
+  disabled        = false
+  service_account = var.service_account_email
+  filename        = "/connector/workflow/cloudbuild.yml"
 
-  build_source = {
-    uri  = "https://github.com/sumits096/connector-gcp-test"
-    ref  = "main" # this should probably be branch, and instead add "/refs/heads/<branchname>" in code, no regex allowed.
-    type = "GITHUB"
+  git_file_source {
+    path      = "https://github.com/sumits096/connector-gcp-test.git"
+    uri       = "https://github.com/sumits096/connector-gcp-test.git"
+    revision  = "refs/heads/main"
+    repo_type = "GITHUB"
   }
 
-  substitutions = {
-    _DIR             = "website/"
-    _BUILD_ENV       = "development"
-    _NODE_VERSION    = "12-alpine3.12"
-    _SUPPRESS_OUTPUT = "true"
-  }
 }
 
 # resource "google_cloudbuild_trigger" "manual-trigger" {
