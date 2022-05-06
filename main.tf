@@ -10,9 +10,8 @@ resource "google_cloudbuild_trigger" "terraform-trigger" {
   provider    = google-beta
   name        = "terraform-trigger"
   description = "Trigger build on changes from sanity"
-  tags        = ["test-flask-server"]
   disabled    = false
-  filename    = "/connector/workflow/cloudbuild.yml"
+  filename    = "/connector/workflow/cloudbuild.yaml"
 
   github {
     owner = "sumits096"
@@ -22,18 +21,18 @@ resource "google_cloudbuild_trigger" "terraform-trigger" {
     }
   }
 
-  git_file_source {
-    path      = "https://github.com/sumits096/connector-gcp-test.git"
-    uri       = "https://github.com/sumits096/connector-gcp-test.git"
-    revision  = "refs/heads/main"
-    repo_type = "GITHUB"
-  }
+  # git_file_source {
+  #   path      = "https://github.com/sumits096/connector-gcp-test.git"
+  #   uri       = "https://github.com/sumits096/connector-gcp-test.git"
+  #   revision  = "refs/heads/main"
+  #   repo_type = "GITHUB"
+  # }
 
-  source_to_build {
-    uri       = "https://github.com/sumits096/connector-gcp-test.git"
-    ref       = "refs/heads/main"
-    repo_type = "GITHUB"
-  }
+  # source_to_build {
+  #   uri       = "https://github.com/sumits096/connector-gcp-test.git"
+  #   ref       = "refs/heads/main"
+  #   repo_type = "GITHUB"
+  # }
 
 }
 
