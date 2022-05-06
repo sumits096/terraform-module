@@ -1,6 +1,6 @@
 service_account_credentials = ""
 project_name                = "studied-client-346013"
-region                      = "us-central1"
+region                      = "global"
 zone                        = "us-central1-a"
 service_account_name        = "23130737730-compute"
 service_account_email       = "23130737730-compute@developer.gserviceaccount.com"
