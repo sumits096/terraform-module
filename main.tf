@@ -7,15 +7,18 @@
 # }
 
 module "cicd_build_trigger_on_push" {
-  source                    = "./build-trigger-on-push-module"
-  google_provider           = var.google_provider
-  build_trigger_name        = var.build_trigger_name
-  build_trigger_description = var.build_trigger_description
-  build_trigger_status      = var.build_trigger_status
-  build_trigger_filename    = var.build_trigger_filename
-  github_owner              = var.github_owner
-  github_repo_name          = var.github_repo_name
-  github_branch_name        = var.github_branch_name
+  source                      = "./build-trigger-on-push-module"
+  service_account_credentials = var.service_account_credentials
+  project_name                = var.project_name
+  region                      = var.region
+  zone                        = var.zone
+  build_trigger_name          = var.build_trigger_name
+  build_trigger_description   = var.build_trigger_description
+  build_trigger_status        = var.build_trigger_status
+  build_trigger_filename      = var.build_trigger_filename
+  github_owner                = var.github_owner
+  github_repo_name            = var.github_repo_name
+  github_branch_name          = var.github_branch_name
 }
 
 # module "cicd_build_trigger_on_pull" {
