@@ -17,8 +17,7 @@ image_name                  = "connector"
 #----------------------------------------------
 # CI/CD Build variables
 #----------------------------------------------
-google_provider           = "google-beta"
-build_trigger_name        = "terraform-trigger"
+build_trigger_name        = "connector_cicd"
 build_trigger_description = "Trigger build on changes terraform"
 build_trigger_status      = false
 build_trigger_filename    = "connector/workflow/cloudbuild-prod.yaml"

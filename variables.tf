@@ -25,7 +25,6 @@ variable "image_name" {}
 #----------------------------------------------
 # CI/CD Build variables
 #----------------------------------------------
-variable "google_provider" {}
 variable "build_trigger_name" {}
 variable "build_trigger_description" {}
 variable "build_trigger_status" {}
