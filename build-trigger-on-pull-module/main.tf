@@ -1,5 +1,5 @@
-resource "google_cloudbuild_trigger" "terraform-trigger" {
-  provider    = var.google_provider
+resource "google_cloudbuild_trigger" "terraform-trigger_on_pull" {
+  provider    = google-beta
   name        = var.build_trigger_name
   description = var.build_trigger_description
   disabled    = var.build_trigger_status
