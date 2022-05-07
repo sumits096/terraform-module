@@ -29,7 +29,7 @@ github_branch_name_push        = "^main$"
 #----------------------------------------------
 # CI/CD Build variables
 #----------------------------------------------
-build_trigger_pull_name        = "version control"
+build_trigger_pull_name        = "version-control"
 build_trigger_pull_description = "Update version number on pull request"
 build_trigger_pull_status      = false
 build_trigger_pull_filename    = "connector/workflow/cloudbuild-version.yaml"
