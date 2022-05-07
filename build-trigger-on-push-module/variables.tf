@@ -1,3 +1,24 @@
+variable "service_account_credentials" {
+  description = "service account credential"
+  type        = string
+  default     = ""
+}
+variable "project_name" {
+  description = "project id"
+  type        = string
+  default     = ""
+}
+variable "region" {
+  description = "project region"
+  type        = string
+  default     = ""
+}
+variable "zone" {
+  description = "project zone"
+  type        = string
+  default     = ""
+}
+
 variable "google_provider" {
   description = "google provider"
   type        = string
