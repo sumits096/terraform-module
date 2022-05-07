@@ -17,10 +17,22 @@ image_name                  = "connector"
 #----------------------------------------------
 # CI/CD Build variables
 #----------------------------------------------
-build_trigger_name        = "terraform-trigger"
-build_trigger_description = "Deploy connector application on cloud run"
-build_trigger_status      = false
-build_trigger_filename    = "connector/workflow/cloudbuild-prod.yaml"
-github_owner              = "sumits096"
-github_repo_name          = "connector-gcp-test"
-github_branch_name        = "^main$"
+build_trigger_push_name        = "terraform-trigger"
+build_trigger_push_description = "Deploy connector application on cloud run"
+build_trigger_push_status      = false
+build_trigger_push_filename    = "connector/workflow/cloudbuild-prod.yaml"
+github_owner_push              = "sumits096"
+github_repo_name_push          = "connector-gcp-test"
+github_branch_name_push        = "^main$"
+
+
+#----------------------------------------------
+# CI/CD Build variables
+#----------------------------------------------
+build_trigger_pull_name        = "version control"
+build_trigger_pull_description = "Update version number on pull request"
+build_trigger_pull_status      = false
+build_trigger_pull_filename    = "connector/workflow/cloudbuild-version.yaml"
+github_owner_pull              = "sumits096"
+github_repo_name_pull          = "connector-gcp-test"
+github_branch_name_pull        = "^main$"

@@ -1,8 +1,7 @@
-variable "google_provider" {
-  description = "google provider"
-  type        = string
-  default     = "google-beta"
-}
+variable "service_account_credentials" {}
+variable "project_name" {}
+variable "region" {}
+variable "zone" {}
 
 variable "build_trigger_name" {
   description = "build trigger name"

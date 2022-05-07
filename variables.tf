@@ -25,10 +25,21 @@ variable "image_name" {}
 #----------------------------------------------
 # CI/CD Build variables
 #----------------------------------------------
-variable "build_trigger_name" {}
-variable "build_trigger_description" {}
-variable "build_trigger_status" {}
-variable "build_trigger_filename" {}
-variable "github_owner" {}
-variable "github_repo_name" {}
-variable "github_branch_name" {}
+variable "build_trigger_push_name" {}
+variable "build_trigger_push_description" {}
+variable "build_trigger_push_status" {}
+variable "build_trigger_push_filename" {}
+variable "github_owner_push" {}
+variable "github_repo_name_push" {}
+variable "github_branch_name_push" {}
+
+#----------------------------------------------
+# CI/CD Build on pull variables
+#----------------------------------------------
+variable "build_trigger_pull_name" {}
+variable "build_trigger_pull_description" {}
+variable "build_trigger_pull_status" {}
+variable "build_trigger_pull_filename" {}
+variable "github_owner_pull" {}
+variable "github_repo_name_pull" {}
+variable "github_branch_name_pull" {}
