@@ -18,7 +18,7 @@ image_name                  = "connector"
 # CI/CD Build variables
 #----------------------------------------------
 build_trigger_name        = "terraform-trigger"
-build_trigger_description = "Trigger build on changes terraform"
+build_trigger_description = "Deploy connector application on cloud run"
 build_trigger_status      = false
 build_trigger_filename    = "connector/workflow/cloudbuild-prod.yaml"
 github_owner              = "sumits096"
