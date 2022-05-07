@@ -6,8 +6,8 @@
 #   compute_network = var.compute_network
 # }
 
-module "cicd_build_trigger" {
-  source                    = "./build-trigger-module"
+module "cicd_build_trigger_on_push" {
+  source                    = "./build-trigger-on-push-module"
   google_provider           = var.google_provider
   build_trigger_name        = var.build_trigger_name
   build_trigger_description = var.build_trigger_description
@@ -17,6 +17,18 @@ module "cicd_build_trigger" {
   github_repo_name          = var.github_repo_name
   github_branch_name        = var.github_branch_name
 }
+
+# module "cicd_build_trigger_on_pull" {
+#   source                    = "./build-trigger-on-pull-module"
+#   google_provider           = var.google_provider
+#   build_trigger_name        = var.build_trigger_name
+#   build_trigger_description = var.build_trigger_description
+#   build_trigger_status      = var.build_trigger_status
+#   build_trigger_filename    = var.build_trigger_filename
+#   github_owner              = var.github_owner
+#   github_repo_name          = var.github_repo_name
+#   github_branch_name        = var.github_branch_name
+# }
 
 # resource "google_cloudbuild_trigger" "terraform-trigger" {
 #   provider    = "google-beta"

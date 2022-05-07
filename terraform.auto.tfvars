@@ -19,9 +19,9 @@ image_name                  = "connector"
 #----------------------------------------------
 google_provider           = "google-beta"
 build_trigger_name        = "terraform-trigger"
-build_trigger_description = "Trigger build on changes from sanity"
+build_trigger_description = "Trigger build on changes terraform"
 build_trigger_status      = false
-build_trigger_filename    = "connector/workflow/cloudbuild.yaml"
+build_trigger_filename    = "connector/workflow/cloudbuild-prod.yaml"
 github_owner              = "sumits096"
 github_repo_name          = "connector-gcp-test"
 github_branch_name        = "^main$"
